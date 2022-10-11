@@ -1,5 +1,5 @@
 from typing import Any, Dict, List
-
+import os
 
 class TypeWriter:
 
@@ -142,6 +142,26 @@ layouts = {
             "          "
         ]
     },
+    "EN_DVORAK" : {
+        "_" : [
+            "`1234567890[]",
+            "',.pyfgcrl/=\\", 
+            "aoeuidhtns-", 
+            ";qjkxbmwvz"
+        ],
+        "shift" : [
+            "~!@#$%^&*(){}",
+            "\"<>PYFGCRL?+|",
+            "AOEUIDHTNS_",
+            ":QJKXBMWVZ"
+        ],
+        "altgr" : [
+            "             ",
+            "             "
+            "           ",
+            "          "
+        ]
+    },
 }
 
 mapping = {
@@ -162,7 +182,7 @@ mapping = {
     "nl": "9"
 }
 
-with open("example.txt", "r", encoding="utf-8") as f:
+with open(os.getenv("IN", "example.txt"), "r", encoding="utf-8") as f:
     text = f.read()
     for layout in layouts:
         tty = TypeWriter(layouts[layout], mapping)
